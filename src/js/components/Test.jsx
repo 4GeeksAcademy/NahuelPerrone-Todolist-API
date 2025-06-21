@@ -7,19 +7,31 @@ const Test = () => {
         .then ((data)=> console.log(data))
     }
     
-    function agregarTarea (){
-        fetch ("https://playground.4geeks.com/todo/users/NahuelPerrone")   
+    function agregarTarea() {
+        const nuevaTarea = {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: {'Content-Type': 'application/json' },
             body: JSON.stringify({
-                label: 'Ir a dormir',
+                label: 'Leer',
                 is_done: false
-            }),
-                 
-                   .then((nuevaTarea) => nuevaTarea.json())
-                    .then((data) => console.log(data));
+                }) 
+            }
+             fetch ("https://playground.4geeks.com/todo/todos/NahuelPerrone", nuevaTarea)
+             .then((nuevaTarea) => nuevaTarea.json ())
+             .then((data) => console.log(data));
     }
 
+    function eliminarTarea () {
+        const requestOptions = {
+                 method: "DELETE",
+                 redirect: "follow"
+                 };
+ 
+                 fetch("https://playground.4geeks.com/todo/todos/", requestOptions)
+                 .then((eliminarTarea) => eliminarTarea.text())
+                 .then((result) => console.log(result))
+                         }
+    
 
     return (
         <>
@@ -27,10 +39,8 @@ const Test = () => {
 
         <button onClick= {(mostrarTarea)} >Mostrar</button>
         <button onClick= {(agregarTarea)}>Agregar</button>
+        <button onClick= {(eliminarTarea)}>Eliminar</button> 
         </>
     )
 }
 export default Test
-
-
-{/* <button onClick= (EliminarTarea)>Eliminar</button>  */}

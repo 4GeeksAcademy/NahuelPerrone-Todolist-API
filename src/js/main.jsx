@@ -14,8 +14,9 @@ import List from './components/List';
 import Test from './components/Test';
 
 
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <Test/>
+    <List/>
   </React.StrictMode>,
 )
